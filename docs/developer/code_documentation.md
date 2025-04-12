@@ -1,4 +1,4 @@
-# AI Glasses Code Documentation
+# Smart Glasses Code Documentation
 
 ## Project Structure
 ```

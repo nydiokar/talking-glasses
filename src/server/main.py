@@ -16,7 +16,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="AI Glasses Server")
+app = FastAPI(title="Smart Glasses Server")
 
 # Security setup
 security_manager = SecurityManager()
@@ -40,12 +40,12 @@ app.include_router(chat.router, prefix="/chat", tags=["chat"])
 
 @app.on_event("startup")
 async def startup_event():
-    logger.info("Starting AI Glasses Server")
+    logger.info("Starting Smart Glasses Server")
     await ai_manager.initialize_models()
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    logger.info("Shutting down AI Glasses Server")
+    logger.info("Shutting down Smart Glasses Server")
     await ai_manager.cleanup()
 
 @app.get("/health")

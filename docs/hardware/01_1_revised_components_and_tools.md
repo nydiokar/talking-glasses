@@ -1,9 +1,9 @@
 1️⃣ What is a Dev Board?
 A Development Board (Dev Board) is a pre-built circuit board with a microcontroller (MCU) + ports + debugging tools. It lets you test and write firmware easily before making a custom PCB.
 
-💡 Think of it like a "prototype motherboard" for your AI glasses before finalizing the hardware design.
+💡 Think of it like a "prototype motherboard" for your Smart Glasses before finalizing the hardware design.
 
-2️⃣ Best Dev Boards for Your AI Glasses (Pick One)
+2️⃣ Best Dev Boards for Your Smart Glasses (Pick One)
 ✅ Beginner-Friendly (Easy to Start)
 Dev Board	MCU	Why Pick It?
 ESP32-S3 DevKitC	ESP32-S3	What you’re already considering – good for Wi-Fi/BLE testing, cheap, well-documented.

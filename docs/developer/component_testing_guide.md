@@ -1,6 +1,6 @@
 # Component Testing Guide
 
-This guide outlines how to test each component of your AI Glasses project using PlatformIO.
+This guide outlines how to test each component of your Smart Glasses project using PlatformIO.
 
 ## Prerequisites
 

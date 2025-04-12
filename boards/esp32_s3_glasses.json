@@ -26,7 +26,7 @@
     "arduino",
     "espidf"
   ],
-  "name": "AI Glasses (ESP32-S3)",
+  "name": "Smart Glasses (ESP32-S3)",
   "upload": {
     "flash_size": "16MB",
     "maximum_ram_size": 327680,

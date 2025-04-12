@@ -1,10 +1,10 @@
-# AI Glasses
+# Smart Glasses Project
 
 Smart glasses powered by ESP32-S3 with cloud-based AI processing capabilities.
 
 ## Overview
 
-The AI Glasses project combines wearable hardware with cloud-based AI services to provide a voice and vision-assisted experience. The system captures audio and visual input from the user's environment, processes it on a remote server, and provides feedback through bone conduction audio and an OLED display.
+The Smart Glasses project combines wearable hardware with cloud-based AI services to provide a voice and vision-assisted experience. The system captures audio and visual input from the user's environment, processes it on a remote server, and provides feedback through bone conduction audio and an OLED display.
 
 ### Key Features
 
@@ -15,16 +15,63 @@ The AI Glasses project combines wearable hardware with cloud-based AI services t
 - **Efficient Power Management**: Multiple power modes to extend battery life
 - **Compact Design**: All components integrated into a glasses form factor
 
-## Hardware Requirements
+## Hardware Configuration
 
-- ESP32-S3 microcontroller
-- MEMS microphone
-- SSD1306 OLED display
-- OV2640 camera module
-- Bone conduction transducer
-- Touch sensor
-- Dual battery power system
-- WiFi connectivity
+### Confirmed Hardware Pinout
+
+| Component | GPIO Pin | Physical Pin | Notes |
+|-----------|----------|--------------|-------|
+| Status LED | GPIO48 | (Internal) | Red LED, active LOW |
+| I2C SDA | GPIO8 | D8 | For OLED display and sensors |
+| I2C SCL | GPIO9 | D9 | For OLED display and sensors |
+
+## Getting Started
+
+### Prerequisites
+
+- PlatformIO installed in VSCode/Cursor
+- ESP32-S3 development board
+- USB cable
+
+### Setup
+
+1. Clone this repository
+2. Open in VSCode/Cursor with PlatformIO installed
+3. Configure your COM port in `platformio.ini` if needed:
+   ```ini
+   upload_port = COMx  # Replace with your actual port
+   ```
+
+### Testing
+
+We have several test sketches to verify hardware functionality:
+
+- `basic_test`: Simple serial communication test
+- `i2c_test`: Tests I2C functionality on pins GPIO8/9
+- `status_led_blink`: Tests the onboard LED on GPIO48
+
+To run a test:
+
+1. Select the appropriate environment in PlatformIO
+2. Click "Upload" to compile and upload the test
+3. Open Serial Monitor to see output (115200 baud)
+
+## Development Guidelines
+
+- Keep commits small and focused
+- Write meaningful commit messages
+- Add tests for new functionality
+- Update documentation as you go
+
+## Project Structure
+
+- `src/firmware/`: Core firmware components
+  - `drivers/`: Hardware-specific driver code
+  - `hal/`: Hardware abstraction layer
+  - `modules/`: Functional modules
+  - `utils/`: Shared utilities
+  - `config/`: Configuration files
+  - `test_sketches/`: Individual test programs
 
 ## Software Architecture
 

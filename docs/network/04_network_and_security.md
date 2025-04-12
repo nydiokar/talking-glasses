@@ -118,14 +118,14 @@ class AuthManager:
 ### Windows Firewall Rules
 ```powershell
 # Allow local AI server
-New-NetFirewallRule -DisplayName \"AI Glasses Server\" `
+New-NetFirewallRule -DisplayName \"Smart Glasses Server\" `
                     -Direction Inbound `
                     -LocalPort 8000 `
                     -Protocol TCP `
                     -Action Allow
 
 # Block external access
-New-NetFirewallRule -DisplayName \"AI Glasses Server - Block External\" `
+New-NetFirewallRule -DisplayName \"Smart Glasses Server - Block External\" `
                     -Direction Inbound `
                     -LocalPort 8000 `
                     -Protocol TCP `

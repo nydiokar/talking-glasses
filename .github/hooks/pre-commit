@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Pre-commit hook to ensure code builds correctly before commit
+#
+
+echo "Running pre-commit checks..."
+
+# Run PlatformIO to verify build
+echo "Building project..."
+pio run -e basic_test
+
+# Check if build succeeded
+if [ $? -ne 0 ]; then
+    echo "❌ Build failed. Please fix the errors before committing."
+    exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
+exit 0 

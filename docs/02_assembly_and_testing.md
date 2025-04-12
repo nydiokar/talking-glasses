@@ -47,7 +47,7 @@ void setup() {
 
 ### 3. Touch Sensor Setup
 ```cpp
-#define TOUCH_PIN 4
+#define TOUCH_PIN 7
 
 void setup() {
     Serial.begin(115200);
@@ -98,7 +98,7 @@ float getBatteryVoltage(int pin) {
 #include <Adafruit_SSD1306.h>
 
 // Pin Definitions
-#define TOUCH_PIN 4
+#define TOUCH_PIN 7
 #define MIC_PIN 36
 #define BAT1_PIN 35
 #define BAT2_PIN 34

@@ -1,8 +1,9 @@
-#ifndef AUDIO_MANAGER_H
-#define AUDIO_MANAGER_H
+#ifndef AUDIO_DRIVER_H
+#define AUDIO_DRIVER_H
 
 #include <driver/i2s.h>
 #include "kiss_fft.h"
+#include "../modules/network_module.cpp"
 
 #define I2S_WS 15
 #define I2S_SD 13
@@ -10,7 +11,7 @@
 #define SAMPLE_RATE 16000
 #define BUFFER_SIZE 1024
 
-class AudioManager {
+class AudioDriver {
 public:
     bool begin() {
         // Configure I2S for MEMS microphone
@@ -74,7 +75,7 @@ public:
         }
         
         // Send audio to server for processing
-        bool success = networkManager->sendAudio((uint8_t*)audioBuffer, audioSize * sizeof(int16_t));
+        bool success = networkModule->sendAudio((uint8_t*)audioBuffer, audioSize * sizeof(int16_t));
         delete[] audioBuffer;
         
         if (!success) {
@@ -100,7 +101,7 @@ public:
 private:
     static const float VOICE_THRESHOLD = 1000.0;
     bool isMuted = false;
-    NetworkManager* networkManager;
+    NetworkModule* networkModule;
 };
 
 #endif

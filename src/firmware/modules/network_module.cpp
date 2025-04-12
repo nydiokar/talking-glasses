@@ -1,11 +1,11 @@
-#ifndef NETWORK_MANAGER_H
-#define NETWORK_MANAGER_H
+#ifndef NETWORK_MODULE_H
+#define NETWORK_MODULE_H
 
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-class NetworkManager {
+class NetworkModule {
 public:
     bool connect(const char* ssid, const char* password) {
         WiFi.begin(ssid, password);

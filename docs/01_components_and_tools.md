@@ -3,7 +3,7 @@
 ## Core Electronics
 
 ### 1. Processing & Communication
-* ESP32-S3 Microcontroller (Wi-Fi/Bluetooth module): ~$10-$15
+* ESP32-S3 NANO (Wi-Fi/Bluetooth module): ~$10-$15
 * OLED Display (128x32 or 128x64 SSD1306): ~$5-10
 * Capacitive Touch Sensor (TTP223 or similar): ~$3-5
 * I2C Logic Level Converter (for OLED): ~$2

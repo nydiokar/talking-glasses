@@ -1,12 +1,12 @@
-#ifndef DISPLAY_MANAGER_H
-#define DISPLAY_MANAGER_H
+#ifndef DISPLAY_DRIVER_H
+#define DISPLAY_DRIVER_H
 
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 
-class DisplayManager {
+class DisplayDriver {
 public:
-    DisplayManager() : display(128, 32, &Wire, -1) {}
+    DisplayDriver() : display(128, 32, &Wire, -1) {}
     
     bool begin() {
         if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {

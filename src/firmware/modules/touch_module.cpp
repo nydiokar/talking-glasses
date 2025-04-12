@@ -1,5 +1,7 @@
-#ifndef TOUCH_MANAGER_H
-#define TOUCH_MANAGER_H
+#ifndef TOUCH_MODULE_H
+#define TOUCH_MODULE_H
+
+#include "../config/pinmap.h"
 
 enum TouchGesture {
     NONE,
@@ -10,7 +12,7 @@ enum TouchGesture {
     SWIPE_RIGHT
 };
 
-class TouchManager {
+class TouchModule {
 public:
     bool begin() {
         pinMode(TOUCH_PIN, INPUT);
@@ -68,7 +70,7 @@ public:
     }
     
 private:
-    static const uint8_t TOUCH_PIN = 4;
+    // Touch configuration
     static const uint16_t TOUCH_THRESHOLD = 40;
     static const unsigned long TAP_DURATION = 150;
     static const unsigned long DOUBLE_TAP_INTERVAL = 300;

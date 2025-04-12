@@ -7,7 +7,7 @@ graph TD
     end
 
     subgraph Main Controller ["ESP32-S3 Nano (Add heatsink if needed)"]
-        PWR -->|3.3V| ESP32[ESP32-S3 Nano<br>Add 0.1μF + 10μF caps near VDD<br>Add RESET button<br>Add BOOT button<br>Add USB connection for programming]
+        PWR -->|3.3V| ESP32[ESP32-S3 Nano<br>Add best0.1μF + 10μF caps near VDD<br>Add RESET button<br>Add BOOT button<br>Add USB connection for programming]
     end
 
     subgraph Peripherals ["Peripherals (Keep data lines short)"]
@@ -21,13 +21,13 @@ graph TD
     end
 
     subgraph Implementation Notes ["Best Practices"]
-        Note1[1. Add ground plane under sensitive components]
-        Note2[2. Keep power and data lines separated]
-        Note3[3. Use star grounding topology]
-        Note4[4. Add bypass capacitors near ICs]
-        Note5[5. Consider adding EMI shielding]
-        Note6[6. Make all connections removable for testing]
-        Note7[7. Add test points for debugging]
+        Note1 [1. Add ground plane under sensitive components]
+        Note2 [2. Keep power and data lines separated]
+        Note3 [3. Use star grounding topology]
+        Note4 [4. Add bypass capacitors near ICs]
+        Note5 [5. Consider adding EMI shielding]
+        Note6 [6. Make all connections removable for testing]
+        Note7 [7. Add test points for debugging]
     end
 
     classDef powerComponent fill:#ff9999,stroke:#ff0000

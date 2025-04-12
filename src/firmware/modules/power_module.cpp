@@ -1,5 +1,5 @@
-#ifndef POWER_MANAGER_H
-#define POWER_MANAGER_H
+#ifndef POWER_MODULE_H
+#define POWER_MODULE_H
 
 enum PowerMode {
     NORMAL,
@@ -7,7 +7,7 @@ enum PowerMode {
     ULTRA_LOW
 };
 
-class PowerManager {
+class PowerModule {
 public:
     bool begin() {
         // Configure ADC for battery monitoring

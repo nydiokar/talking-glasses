@@ -2,25 +2,105 @@
 
 ## Project Structure
 ```
-glasses-ai/
+talking-glasses/
 ├── docs/                  # Documentation files
 ├── src/
-│   ├── firmware/         # ESP32-S3 firmware files
-│   ├── server/          # AI server implementation
-│   └── models/          # 3D printing files
+│   ├── firmware/          # ESP32-S3 firmware source
+│   │   ├── main/          # Entry point and main loop
+│   │   ├── config/        # Board-specific configurations
+│   │   ├── hal/           # Hardware Abstraction Layer
+│   │   ├── drivers/       # Peripheral drivers (I2C, I2S, etc.)
+│   │   ├── modules/       # Functional modules (audio, display, etc.)
+│   │   └── utils/         # Utility functions and helpers
+│   ├── server/            # AI server implementation
+│   └── models/            # 3D printing files
+├── include/               # Shared headers
+├── boards/                # Board-specific configurations
+├── platformio.ini         # PlatformIO configuration file
+└── README.md              # Project overview and setup instructions
 ```
+## Overview of the structure
+
+🧩 Key Components
+1. Main Application (main/)
+main.cpp: Initializes the system, starts the scheduler, and manages the main loop.​
+
+2. Configuration (config/)
+
+pinmap.h: Defines GPIO assignments for peripherals.​
+config.h: Holds global configuration macros and settings.​
+
+3. Hardware Abstraction Layer (hal/)
+Purpose: Provides a uniform interface to hardware functionalities, facilitating portability.​
+
+Examples:
+gpio_hal.cpp: Manages GPIO operations.​
+i2c_hal.cpp: Handles I2C communication.​
+i2s_hal.cpp: Manages I2S audio interface.​
+
+4. Peripheral Drivers (drivers/)
+Purpose: Implements low-level drivers for specific peripherals.​
+
+Examples:
+display_driver.cpp: Controls OLED display operations.​
+audio_driver.cpp: Manages audio input/output.​
+
+5. Functional Modules (modules/)
+Purpose: Encapsulates high-level functionalities.​
+
+Examples:
+audio_module.cpp: Handles audio processing and voice detection.​
+network_module.cpp: Manages Wi-Fi and server communications.​
+touch_module.cpp: Processes touch input and gestures.​
+power_module.cpp: Manages power and battery operations.​
+
+6. Utilities (utils/)
+Purpose: Provides helper functions and common utilities.​
+
+Examples:
+logger.cpp: Handles logging and debugging outputs.​
+timer_utils.cpp: Manages timing operations.​
+
+
 
 ## Firmware Components
 
 ### main.cpp
-- **Purpose**: Main firmware entry point
+- **Purpose**: Main firmware entry point - initializes the system, starts the scheduler, and manages the main loop.​
 - **Key Functions**:
   * System initialization
   * Component management
   * Main loop implementation
   * Event handling
 
-### display_manager.h
+### gpio_hal.cpp
+- **Purpose**: GPIO hardware abstraction
+- **Features**:
+  * Pin configuration
+  * Input/output control
+  * Interrupt handling
+  * Power state management
+  * Signal debouncing
+
+### i2c_hal.cpp
+- **Purpose**: I2C communication interface
+- **Features**:
+  * Bus initialization
+  * Device addressing
+  * Data transmission
+  * Error handling
+  * Clock management
+
+### i2s_hal.cpp
+- **Purpose**: I2S audio interface
+- **Features**:
+  * Audio stream configuration
+  * Clock synchronization
+  * DMA transfers
+  * Sample rate management
+  * Channel control
+
+### display_driver.cpp
 - **Purpose**: OLED display control
 - **Features**:
   * Status display
@@ -29,7 +109,7 @@ glasses-ai/
   * Battery status
   * Power management integration
 
-### network_manager.h
+### network_module.cpp
 - **Purpose**: WiFi and server communication
 - **Features**:
   * WiFi connection handling
@@ -38,7 +118,7 @@ glasses-ai/
   * Error recovery
   * Security implementation
 
-### audio_manager.h
+### audio_driver.cpp
 - **Purpose**: Audio input/output control
 - **Features**:
   * Voice detection
@@ -47,7 +127,7 @@ glasses-ai/
   * Audio processing
   * Power optimization
 
-### touch_manager.h
+### touch_module.cpp
 - **Purpose**: Touch input handling
 - **Features**:
   * Gesture recognition
@@ -55,7 +135,7 @@ glasses-ai/
   * Multi-touch support
   * Power-efficient polling
 
-### power_manager.h
+### power_module.cpp
 - **Purpose**: Power and battery management
 - **Features**:
   * Dual battery monitoring
@@ -63,6 +143,24 @@ glasses-ai/
   * Voltage monitoring
   * Battery life optimization
   * Low power modes
+
+### logger.cpp
+- **Purpose**: System logging utility
+- **Features**:
+  * Multi-level logging
+  * Console output
+  * Flash storage logging
+  * Error reporting
+  * Performance metrics
+
+### timer_utils.cpp
+- **Purpose**: Timing operations management
+- **Features**:
+  * Precise delays
+  * Event scheduling
+  * Timeout handling
+  * Power-aware timing
+  * Synchronization utilities
 
 ## Server Components
 

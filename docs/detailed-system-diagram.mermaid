@@ -1,0 +1,46 @@
+graph TD
+    subgraph Power Management ["Power Management (Keep traces short)"]
+        USB[USB Power Input<br>5V via USB-C] -->|5V| TP4056[TP4056 Charger Module<br>Add LED for charge status<br>Add 0.1μF decoupling cap]
+        TP4056 -->|3.7-4.2V| BATT[LiPo Battery<br>3.7V 1250mAh LP503562<br>Add voltage test point]
+        BATT -->|3.7-4.2V| ME6211[ME6211 3.3V Regulator<br>Add 0.1μF input cap<br>Add 1μF output cap<br>Add voltage test point]
+        ME6211 -->|3.3V| PWR[3.3V Power Rail<br>Add power LED indicator<br>Add multiple test points]
+    end
+
+    subgraph Main Controller ["ESP32-S3 Nano (Add heatsink if needed)"]
+        PWR -->|3.3V| ESP32[ESP32-S3 Nano<br>Add 0.1μF + 10μF caps near VDD<br>Add RESET button<br>Add BOOT button<br>Add USB connection for programming]
+    end
+
+    subgraph Peripherals ["Peripherals (Keep data lines short)"]
+        PWR -->|3.3V| CAM[OV7675 Camera<br>Add 0.1μF decoupling cap<br>Use shortest possible data lines<br>Consider shielding for image data bus]
+        PWR -->|3.3V| MIC[ICS-43434 Microphone<br>Add 0.1μF decoupling cap<br>Keep I2S lines short<br>Add ground plane under mic]
+        PWR -->|3.3V| SPK[Bone Conductor Speaker<br>Consider adding small amp circuit<br>Add flyback diode<br>Keep audio lines away from data bus]
+        
+        ESP32 -->|SCCB/I2C GPIO 21,22<br>Data pins GPIO 12-19| CAM
+        ESP32 -->|I2S BCLK: GPIO 26<br>LRCLK: GPIO 25<br>DATA: GPIO 33| MIC
+        ESP32 -->|I2S/DAC GPIO 17,18| SPK
+    end
+
+    subgraph Implementation Notes ["Best Practices"]
+        Note1[1. Add ground plane under sensitive components]
+        Note2[2. Keep power and data lines separated]
+        Note3[3. Use star grounding topology]
+        Note4[4. Add bypass capacitors near ICs]
+        Note5[5. Consider adding EMI shielding]
+        Note6[6. Make all connections removable for testing]
+        Note7[7. Add test points for debugging]
+    end
+
+    classDef powerComponent fill:#ff9999,stroke:#ff0000
+    classDef dataComponent fill:#99ff99,stroke:#00ff00
+    classDef peripheral fill:#9999ff,stroke:#0000ff
+    classDef notes fill:#ffffcc,stroke:#999900
+    
+    class USB,TP4056,BATT,ME6211,PWR powerComponent
+    class ESP32 dataComponent
+    class CAM,MIC,SPK peripheral
+    class Note1,Note2,Note3,Note4,Note5,Note6,Note7 notes
+
+    style Power Management fill:#ffe6e6,stroke:#ff0000
+    style Main Controller fill:#e6ffe6,stroke:#00ff00
+    style Peripherals fill:#e6e6ff,stroke:#0000ff
+    style Implementation Notes fill:#fffff0,stroke:#999900

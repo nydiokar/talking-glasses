@@ -1,0 +1,22 @@
+firmware:
+  - src/firmware/**/*
+
+server:
+  - src/server/**/*
+
+documentation:
+  - docs/**/*
+  - '**/*.md'
+
+hardware:
+  - src/models/**/*
+  - docs/hardware/**/*
+
+configuration:
+  - platformio.ini
+  - .github/**/*
+  - include/**/*
+  - boards/**/*
+
+test:
+  - src/firmware/test_sketches/**/* 

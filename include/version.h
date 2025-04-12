@@ -1,11 +1,10 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define VERSION_MAJOR 0
-#define VERSION_MINOR 0
-#define VERSION_PATCH 1
-#define VERSION_STRING "0.0.1"
-#define BUILD_DATE "2025-04-13"
-#define BUILD_TIME "00:14:33"
+// This file is automatically updated by the release workflow
+// Do not modify this file manually
+
+#define FIRMWARE_VERSION "v0.1.0-dev"
+#define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
 #endif // VERSION_H

@@ -2,8 +2,8 @@
 #define PINMAP_H
 
 // OLED Display pins
-#define OLED_SDA 8
-#define OLED_SCL 9
+#define OLED_SDA 17
+#define OLED_SCL 18
 
 // I2C Bus pins (used by I2C_HAL)
 #define I2C_SDA OLED_SDA
@@ -16,7 +16,7 @@
 #define I2S_DIN 27
 
 // Touch sensor pin
-#define TOUCH_PIN 7
+#define TOUCH_PIN 8
 
 // Battery monitoring pins
 #define BAT1_VOLTAGE_PIN 34

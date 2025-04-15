@@ -23,7 +23,7 @@ This guide outlines how to test each component of your Smart Glasses project usi
 **Purpose**: Scan the I2C bus and detect connected devices (OLED display, sensors, etc.)
 
 **Setup**:
-1. Connect SDA to pin 21 and SCL to pin 22 on ESP32-S3
+1. Connect SDA to pin 17 and SCL to pin 18 on ESP32-S3
 2. Connect any I2C devices you want to test
 
 **How to Run**:
@@ -41,7 +41,7 @@ This guide outlines how to test each component of your Smart Glasses project usi
 **Purpose**: Test OLED display functionality
 
 **Setup**:
-1. Connect SDA to pin 21 and SCL to pin 22 on ESP32-S3
+1. Connect SDA to pin 17 and SCL to pin 18 on ESP32-S3
 2. Connect OLED display VCC to 3.3V and GND to ground
 
 **How to Run**:

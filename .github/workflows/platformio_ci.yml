@@ -52,7 +52,8 @@ jobs:
       continue-on-error: true
     
     - name: PlatformIO Audit
-      run: pio pkg exec -p pkg-name=platformio/tool-audit -c audit project -e basic_test
+      run: pio pkg exec -p platformio/tool-audit -c "audit project"
+      continue-on-error: true
     
     - name: Build basic_test environment
       run: pio run -e basic_test

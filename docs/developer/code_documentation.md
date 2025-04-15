@@ -257,7 +257,7 @@ timer_utils.cpp: Manages timing operations.​
 ## Configuration Notes
 
 ### ESP32-S3 Pins
-- OLED: I2C (SDA: 21, SCL: 22)
+- OLED: I2C (SDA: 17, SCL: 18)
 - Audio: I2S (BCLK: 26, LRCK: 25, DOUT: 33)
 - Touch: GPIO4
 - Battery Monitoring: GPIO34, GPIO35

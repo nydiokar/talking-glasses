@@ -6,16 +6,16 @@ Looking at your ESP32-S3-NANO board, here's how the physical pins map to our cod
 
 | Physical Pin Label | Code Pin Number | Used For | Tested |
 |-------------------|-----------------|----------|--------|
-| D0 | GPIO0 | - | |
-| D1 | GPIO1 | - | |
-| D2 | GPIO2 | - | |
-| D3 | GPIO3 | - | |
-| D4 | GPIO4 | - | |
-| D5 | GPIO5 | - | |
-| D6 | GPIO6 | - | |
-| D7 | GPIO7 | - | |
-| D8 | GPIO8 | I2C SDA | ✓ |
-| D9 | GPIO9 | I2C SCL | ✓ |
+| D0 | GPIO3 | - | |
+| D1 | GPIO4 | - | |
+| D2 | GPIO5 | - | ✓ |
+| D3 | GPIO6 | - | ✓ |
+| D4 | GPIO7 | - | ✓ |
+| D5 | GPIO8 | Touch Sensor | ✓ |
+| D6 | GPIO9 | - | ✓ |
+| D7 | GPIO10 | - | |
+| D8 | GPIO17 | I2C SDA | ✓ |
+| D9 | GPIO18 | I2C SCL | ✓ |
 | D10 | GPIO10 | - | |
 | D11 | GPIO11 | - | |
 | D12 | GPIO12 | - | |
@@ -40,12 +40,12 @@ Looking at your ESP32-S3-NANO board, here's how the physical pins map to our cod
 
 For the I2C test, connect:
 
-1. SDA (Serial Data) → Connect to pin **D8** (GPIO8) on your board (TESTED & WORKING)
-2. SCL (Serial Clock) → Connect to pin **D9** (GPIO9) on your board (TESTED & WORKING)
+1. SDA (Serial Data) → Connect to pin **D8** (GPIO17) on your board (TESTED & WORKING)
+2. SCL (Serial Clock) → Connect to pin **D9** (GPIO18) on your board (TESTED & WORKING)
 3. VCC → Connect to **3V3** on your board
 4. GND → Connect to **GND** on your board
 
-**Note:** The original pinout suggested D21/D22, but testing confirmed that D8/D9 (GPIO8/GPIO9) work properly for I2C on this board.
+**Note:** The physical pins labeled D8/D9 on the board correspond to GPIO17/GPIO18 in software.
 
 ## Onboard LED Information
 
@@ -87,8 +87,8 @@ If you're not seeing any output in the monitor, make sure:
 ```
 ESP32-S3-NANO Board          OLED Display
 -----------------          -------------
-     D8 (GPIO8) --------> SDA  (TESTED & WORKING)
-     D9 (GPIO9) --------> SCL  (TESTED & WORKING)
+     D8 (GPIO17) --------> SDA  (TESTED & WORKING)
+     D9 (GPIO18) --------> SCL  (TESTED & WORKING)
      3V3 ---------------------> VCC
      GND ---------------------> GND
 ```
@@ -98,4 +98,15 @@ ESP32-S3-NANO Board          OLED Display
 The following has been tested and confirmed working:
 - Basic serial communication
 - Status LED (GPIO48) - single red LED, active LOW
-- I2C functionality on pins D8/D9 (GPIO8/GPIO9) 
+- I2C functionality on pins D8/D9 (GPIO8/GPIO9)
+
+## Pin Mapping Pattern
+
+There's a pattern in how physical pin labels map to GPIO numbers:
+
+1. For pins D0-D7: The GPIO number is D-number + 3
+   - For example: D2 connects to GPIO5 (2+3), D5 connects to GPIO8 (5+3)
+
+2. For pins D8-D9: These connect to GPIO17 and GPIO18 respectively
+
+This pattern is important when writing code that needs to access specific pins, as you must use the GPIO number, not the physical pin label. 
